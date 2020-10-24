@@ -10,7 +10,6 @@ export class FieldDirective implements OnInit {
   ) { }
   
   ngOnInit(): void {
-    console.log(this.campo);
     const campo = this.campo.nativeElement;
 
     if(campo.name){
