@@ -1,11 +1,13 @@
+{{title}}
 <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
   <i class="material-icons">add</i>
 </button>
 
 <input type="email" [ngClass]="{'hide': ngClassCustom}"/>
-<input type="password" (input)="input()" [ngClass]="{'hide': ngClassCustom}"/>
+<input type="password" name="senha" (input)="input()" [ngClass]="{'hide': ngClassCustom}" eveField/>
+<input type="email" name="nome" eveField />
 <button (click)="enviar()" [disabled]="disabledButton">Entrar</button>
 <img [src]="avatar">
 
 <app-header></app-header>
-<app-header></app-header>
+
