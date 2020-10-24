@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'xablau';
+  title = 'AUHAUAHUAHUAHAUHAUAHUAHUAHAUHAUHAUAHUA';
+  teste = 34 + 2;
+
+  soma(x, y) {
+    return x + y;
+  }
+
+
+
 }
