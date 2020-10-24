@@ -5,10 +5,14 @@
   "projects": {
     "xablau": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "skipTests": true
+        }
+      },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "eve",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
