@@ -1,38 +1,97 @@
 <eve-header>
-    <!-- List items with avatar and action -->
-    <div class="demo-list-action mdl-list">
-      <div class="mdl-list__item">
-        <span class="mdl-list__item-primary-content">
-          <i class="material-icons mdl-list__item-avatar">person</i>
-          <span>Bryan Cranston</span>
-        </span>
-        <span [ngClass]="{'hide': fav}">favoritado!</span>
-        <a class="mdl-list__item-secondary-action" href="#" (click)="favoritar()"><i class="material-icons">star</i></a>
-      </div>
-      <div class="mdl-list__item">
-        <span class="mdl-list__item-primary-content">
-          <i class="material-icons mdl-list__item-avatar">person</i>
-          <span>Aaron Paul</span>
-        </span>
-        <span [ngClass]="{'hide': fav}">favoritado!</span>
-        <a class="mdl-list__item-secondary-action" href="#" (click)="favoritar()"><i class="material-icons">star</i></a>
-      </div>
-      <div class="mdl-list__item">
-        <span class="mdl-list__item-primary-content">
-          <i class="material-icons mdl-list__item-avatar">person</i>
-          <span>Bob Odenkirk</span>
-        </span>
-        <span [ngClass]="{'hide': fav}">favoritado!</span>
-        <span class="mdl-list__item-secondary-content">
-          <a class="mdl-list__item-secondary-action" href="#" (click)="favoritar()"><i class="material-icons">star</i></a>
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="text" id="sample3" (input)="pesquisar($event.target.value)">
+    <label class="mdl-textfield__label" for="sample3">Pesquisar...</label>
+  </div>
+
+  {{search}}
+  <!-- List items with avatar and action -->
+  <ul class="demo-list-action mdl-list">
+    <li class="mdl-list__item" *ngFor="let persona of personas; let i = index">
+      <span class="mdl-list__item-primary-content">
+        <i class="material-icons mdl-list__item-avatar">person</i>
+        <span>{{persona.classe}}</span>
+        <p>{{persona.descricao}}</p>
       </span>
+      <a class="mdl-list__item-secondary-action" [ngClass]="{'violet': persona.favoritado}" href="#" (click)="favoritar(i)"><i class="material-icons">star</i></a>
+    </li>
+
+  </ul>
+
+  <h1>Ataques</h1>
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" (click)="rodarD20($event)">
+    D20
+  </button>
+
+  {{valorD20}}
+
+
+  <h2>Cadastro</h2>
+  <div id="mycard">
+
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">Contact details</h2>
       </div>
+
+
+      <div class="mdl-card__supporting-text">
+        <!-- First, tell us how to get in touch with you! -->
+        <form action="#">
+
+          <div id="name">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input (input)="getValues($event.target.value, 'nome')" class="mdl-textfield__input" type="text" id="nome">
+              {{cadastro.nome}}
+              <label class="mdl-textfield__label" for="nome">Nome</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input (input)="getValues($event.target.value, 'classe')" class="mdl-textfield__input" type="text" id="classe">
+              {{cadastro.classe}}
+              <label class="mdl-textfield__label" for="classe">Classe</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input (input)="getValues($event.target.value, 'raca')" class="mdl-textfield__input" type="text" id="raca">
+              {{cadastro.raca}}
+              <label class="mdl-textfield__label" for="raca">Raça</label>
+            </div>
+          </div>
+
+          <div id="contact">
+            <div id="phone">
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input (input)="getValues($event.target.value, 'telefone')" class="mdl-textfield__input" type="text" id="telefone">
+                {{cadastro.telefone}}
+                <label class="mdl-textfield__label" for="telefone">Telefone</label>
+                <span class="mdl-textfield__error">Mobile must be a number!</span>
+              </div>
+            </div>
+
+            <div id="email">
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input (input)="getValues($event.target.value, 'nivel')" class="mdl-textfield__input" type="nivel">
+                {{cadastro.nivel}}
+                <label class="mdl-textfield__label" for="nivel">Nível</label>
+                <span class="mdl-textfield__error">Enter a valid email!</span>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+
+
+
     </div>
 
-    <h1>Ataques</h1>
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" (click)="rodarD20()">
-        D20
-    </button>
+    <!-- FAB button with ripple -->
+    <div id="next">
+      <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
+        <i class="material-icons">arrow_forward</i>
+      </button>
+    </div>
+  </div>
 
-    {{valorD20}}
+  <input #xablau value="23" />
+  {{xablau.value}}
 </eve-header>
