@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
+import { FormGroup, NgForm } from '@angular/forms';
 
-// interface Personas {
-//   classe: string;
-//   descricao: string;
-//   favoritado?: boolean;
-// }
-
-class Personas {
+interface Personas {
   classe: string;
   descricao: string;
   favoritado?: boolean;
 }
+
+// class Personas {
+//   classe: string;
+//   descricao: string;
+//   favoritado?: boolean;
+// }
 
 @Component({
   selector: 'app-root',
@@ -62,8 +63,13 @@ export class AppComponent{
     this.search = value;
   }
 
-  getValues(value: string, campo: string){
-    this.cadastro[campo] = value;
+  salvar(formCadastro: NgForm) {
+    if(formCadastro.invalid) {
+      formCadastro.control.markAllAsTouched();
+    } else {
+      console.log('deu bom!');
+      formCadastro.control.reset();
+    }
   }
 
 }
