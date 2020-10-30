@@ -1,1 +1,57 @@
-<p>cadastro works!</p>
+<h2>Cadastro</h2>
+<form #formCadastro="ngForm" id="mycard" (ngSubmit)="salvar(formCadastro)">
+  <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text">Contact details</h2>
+    </div>
+
+    <div class="mdl-card__supporting-text">
+      <!-- First, tell us how to get in touch with you! -->
+
+        <div id="name">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input #nome="ngModel" [(ngModel)]="cadastro.nome" name="nome" class="mdl-textfield__input" type="text" id="nome" required>
+            <label class="mdl-textfield__label" for="nome">Nome</label>
+            <span class="mdl-textfield__error" *ngIf="nome.invalid && nome.touched">Nome é obrigatório</span>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input #classe="ngModel" [(ngModel)]="cadastro.classe" name="classe"  class="mdl-textfield__input" type="text" id="classe" required>
+            <label class="mdl-textfield__label" for="classe">Classe</label>
+            <span class="mdl-textfield__error" *ngIf="classe.invalid && classe.touched">Classe é obrigatório</span>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input #raca="ngModel" [(ngModel)]="cadastro.raca" name="raca" class="mdl-textfield__input" type="text" id="raca" required>
+            <label class="mdl-textfield__label" for="raca">Raça</label>
+            <span class="mdl-textfield__error" *ngIf="raca.invalid && raca.touched">Raça é obrigatório</span>
+          </div>
+        </div>
+
+        <div id="contact">
+          <div id="phone">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input #telefone="ngModel" [(ngModel)]="cadastro.telefone" name="telefone" class="mdl-textfield__input" type="text" id="telefone" required>
+              <label class="mdl-textfield__label" for="telefone">Telefone</label>
+              <span class="mdl-textfield__error" *ngIf="telefone.invalid && telefone.touched">Telefone é obrigatório</span>
+            </div>
+          </div>
+
+          <div id="email">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input #nivel="ngModel" [(ngModel)]="cadastro.nivel" name="nivel" class="mdl-textfield__input" type="text" required>
+
+              <label class="mdl-textfield__label" for="nivel">Nível</label>
+              <span class="mdl-textfield__error" *ngIf="nivel.invalid && nivel.touched">Nível é obrigatório</span>
+            </div>
+          </div>
+        </div>
+    </div>
+      
+    </div>
+    
+    <!-- FAB button with ripple -->
+    <div id="next">
+      <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
+        <i class="material-icons">arrow_forward</i>
+      </button>
+    </div>
+</form>

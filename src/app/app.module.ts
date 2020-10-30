@@ -3,24 +3,39 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { FieldDirective } from './field.directive';
-import { AtaquesComponent } from './pages/ataques/ataques.component';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SharedModule } from './shared/shared.module';
-import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+
+const appRoutes: Routes = [
+  {
+    path: '',
+    loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
+  },
+  {
+    path: 'cadastro',
+    loadChildren: () => import('./pages/cadastro/cadastro.module').then(m => m.CadastroModule)
+  },
+  {
+    path: 'ataques',
+    loadChildren: () => import('./pages/ataques/ataques.module').then(m => m.AtaquesModule)
+  },
+  {
+    path: '**',
+    redirectTo: ''
+  }
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     FieldDirective,
-    AtaquesComponent,
-    CadastroComponent,
-    HomeComponent,
   ],
   imports: [
     BrowserModule,
     SharedModule,
-    FormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

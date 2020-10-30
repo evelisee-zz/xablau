@@ -1,1 +1,18 @@
-<p>home works!</p>
+<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="text" id="sample3" (input)="pesquisar($event.target.value)">
+    <label class="mdl-textfield__label" for="sample3">Pesquisar...</label>
+  </div>
+
+  {{search}}
+  <!-- List items with avatar and action -->
+  <ul class="demo-list-action mdl-list">
+    <li class="mdl-list__item" *ngFor="let persona of personas; let i = index">
+      <span class="mdl-list__item-primary-content">
+        <i class="material-icons mdl-list__item-avatar">person</i>
+        <span>{{persona.classe}}</span>
+        <p>{{persona.descricao}}</p>
+      </span>
+      <a class="mdl-list__item-secondary-action" [ngClass]="{'violet': persona.favoritado}" href="#" (click)="favoritar(i)"><i class="material-icons">star</i></a>
+    </li>
+
+  </ul>
