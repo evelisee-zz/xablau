@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { TitlePageService } from 'src/app/core/title.service';
 
 @Component({
@@ -8,6 +8,20 @@ import { TitlePageService } from 'src/app/core/title.service';
   styleUrls: ['./cadastro.component.css']
 })
 export class CadastroComponent{
+
+  // email = new FormControl('evelisevazquez@gmail.com');
+  // telefone = new FormControl('');
+  formCadastroLogin = new FormGroup({
+    nome: new FormControl('', Validators.required),
+    classe: new FormControl('', Validators.required),
+    raca: new FormControl('', Validators.required),
+    telefone: new FormControl('', [
+        Validators.required, 
+        Validators.pattern(/[0-9]{4}-?[0-9]{4}[0-9]?/),
+    ]),
+    nivel: new FormControl('', Validators.required),
+  });
+  
   
   cadastro = {
     nome: '',
@@ -20,6 +34,14 @@ export class CadastroComponent{
 
   constructor(private titlePageService: TitlePageService){
     this.titlePageService.atualizaTitulo('Cadastro');
+  }
+
+  acessar(){
+    console.log(this.formCadastroLogin.invalid);
+  }
+
+  salvarReactiveForms(){
+    console.log(this.formCadastroLogin.invalid);
   }
 
   salvar(formCadastro: NgForm) {

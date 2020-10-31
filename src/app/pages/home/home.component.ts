@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActionDTO } from 'src/app/pages/home/dto/ActionDTO';
 import { TitlePageService } from 'src/app/core/title.service';
 import { HomeService } from './home.service';
-import { Personas } from './interfaces/persona.interface';
 
 
 export interface Endereco {
@@ -51,10 +51,14 @@ export class HomeComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.homeService.getDragonData().subscribe((list: DragonActionList) => {
-      console.log(list.actions);
-      this.personas = list.actions;
-    })
+    this.homeService.getDragonData();
+      this.homeService.getCEP('11015400').subscribe((list) => {
+        console.log(list);
+      })
+    // this.homeService.getDragonData().subscribe((list: DragonActionList) => {
+    //   console.log(list);
+    //   this.personas = list.actions.map(action => new ActionDTO(action));
+    // })
   }
     favoritar(index: number) {
       this.personas[index].favorited = !this.personas[index].favorited
@@ -70,15 +74,16 @@ export class HomeComponent implements OnInit{
   }
   
   buscarNaApi() {
-    this.homeService.getCEP(this.valorDoCEP).subscribe(
-      //deu bom
-      (endereco: Endereco) => {
-        this.endereco = endereco;
-      },
-      //deu ruim
-      (erro) => {
-        alert(erro)
-      }
-    );
+    console.log('sds')
+    // this.homeService.getCEP(this.valorDoCEP).subscribe(
+    //   //deu bom
+    //   (endereco) => {
+    //    console.log(endereco);
+    //   },
+    //   //deu ruim
+    //   (erro) => {
+    //     alert('Deu ruim');
+    //   }
+    // );
   }
 }
