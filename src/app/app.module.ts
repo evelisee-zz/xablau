@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { FieldDirective } from './field.directive';
-import { CadastroComponent } from './pages/cadastro/cadastro.component';
-import { HomeComponent } from './pages/home/home.component';
 import { SharedModule } from './shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
 

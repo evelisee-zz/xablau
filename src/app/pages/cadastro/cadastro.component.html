@@ -55,3 +55,16 @@
       </button>
     </div>
 </form>
+
+<card-personagem [dados]="cardPersonagem" (change)="editarPersonagem($event)"></card-personagem>
+
+
+<mat-checkbox id="ketchup" (selectChangeEvent)="selectedSauce($event)">
+  Katchup
+</mat-checkbox>
+<mat-checkbox id="mostarda"> 
+  Mostarda
+</mat-checkbox>
+<mat-checkbox id="maionese">
+  Maionese
+</mat-checkbox>
