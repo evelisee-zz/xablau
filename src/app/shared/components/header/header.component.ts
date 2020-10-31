@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TitlePageService } from 'src/app/core/title.service';
 
 @Component({
   selector: 'eve-header',
@@ -6,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  title = ""; 
 
-  constructor() { }
+  constructor(private titlePageService: TitlePageService) {
+    this.titlePageService.titulo.subscribe((novoTitulo:string) => {
+      this.title = novoTitulo;
+    })
+  }
 
   ngOnInit(): void {
   }

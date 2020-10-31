@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { TitlePageService } from 'src/app/core/title.service';
 
 @Component({
   selector: 'eve-cadastro',
@@ -16,6 +17,10 @@ export class CadastroComponent{
     raca: '',
   }
   cardPersonagem;
+
+  constructor(private titlePageService: TitlePageService){
+    this.titlePageService.atualizaTitulo('Cadastro');
+  }
 
   salvar(formCadastro: NgForm) {
     if(formCadastro.invalid) {

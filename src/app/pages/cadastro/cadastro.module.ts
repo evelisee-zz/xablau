@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { PersonagemComponent } from './personagem/personagem.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
+import { PersonagemService } from './personagem/personagem.service';
 
 const routes: Routes = [
   {
@@ -23,6 +24,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     RouterModule.forChild(routes)
+  ],
+  providers: [
+    // PersonagemService
   ]
 })
 export class CadastroModule { }

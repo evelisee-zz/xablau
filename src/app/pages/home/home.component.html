@@ -9,10 +9,27 @@
     <li class="mdl-list__item" *ngFor="let persona of personas; let i = index">
       <span class="mdl-list__item-primary-content">
         <i class="material-icons mdl-list__item-avatar">person</i>
-        <span>{{persona.classe}}</span>
-        <p>{{persona.descricao}}</p>
+        <span>{{persona.name}}</span>
+        <p>{{persona.desc}}</p>
       </span>
-      <a class="mdl-list__item-secondary-action" [ngClass]="{'violet': persona.favoritado}" href="#" (click)="favoritar(i)"><i class="material-icons">star</i></a>
+      <a class="mdl-list__item-secondary-action" [ngClass]="{'violet': persona.favorited}" href="#" (click)="favoritar(i)"><i class="material-icons">star</i></a>
     </li>
 
   </ul>
+
+
+  <h2>Busca CEP:</h2>
+  <input type="number" placeholder="digite seu cep" (input)="inputCep($event.target.value)" />
+  <button (click)="buscarNaApi()">buscar</button><br/>
+
+  <div *ngIf="endereco.cep !== ''">
+    <span>CEP: {{endereco.cep}}</span> <br/>
+    <span>Logradouro: {{endereco.logradouro}}</span><br/>
+    <span>Complemento: {{endereco.complemento}}</span><br/>
+    <span>Bairro: {{endereco.bairro}}</span><br/>
+    <span>Localidade: {{endereco.localidade}}</span><br/>
+    <span>UF: {{endereco.uf}}</span><br/>
+  </div>
+
+  <div *ngIf="endereco.cep === ''">Nenhum CEP encontrado</div>
+
