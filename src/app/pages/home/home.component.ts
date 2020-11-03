@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActionDTO } from 'src/app/pages/home/dto/ActionDTO';
 import { TitlePageService } from 'src/app/core/title.service';
 import { HomeService } from './home.service';
+import { DragonListInfo } from './interfaces/dragonlist.interface';
 
 
 export interface Endereco {
@@ -12,15 +13,6 @@ export interface Endereco {
   localidade: string;
   uf: string;
   ddd: string;
-}
-export interface DragonActionList {
-  actions: Array<DragonListInfo>;
-}
-
-export interface DragonListInfo {
-  favorited: boolean;
-  name: string;
-  desc: string;
 }
 
 @Component({
@@ -33,6 +25,7 @@ export class HomeComponent implements OnInit{
   search = "";
   personas;
   valorDoCEP = "";
+  data = new Date();
   endereco = {
     "cep": "",
     "logradouro": "",
@@ -51,14 +44,12 @@ export class HomeComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.homeService.getDragonData();
-      this.homeService.getCEP('11015400').subscribe((list) => {
-        console.log(list);
-      })
-    // this.homeService.getDragonData().subscribe((list: DragonActionList) => {
-    //   console.log(list);
-    //   this.personas = list.actions.map(action => new ActionDTO(action));
-    // })
+    this.homeService.getDragonData().subscribe(
+      (list: Array<DragonListInfo>) => {
+        this.personas = list.map(action => new ActionDTO(action));
+      },
+      (error) => alert(error)
+    )
   }
     favoritar(index: number) {
       this.personas[index].favorited = !this.personas[index].favorited

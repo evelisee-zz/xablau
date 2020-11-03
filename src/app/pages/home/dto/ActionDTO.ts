@@ -1,5 +1,4 @@
-import { DragonListInfo } from '../home.component';
-
+import { DragonListInfo } from '../interfaces/dragonlist.interface';
 
 export class ActionDTO {
     nome: string;
